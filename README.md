@@ -1,7 +1,13 @@
 # Read Me
 O seguinte projeto foi desenvolvido por Keoma Pereira para prática da programação. O projeto consiste em um serviço para movimentações financeiras, utilizado o banco de dados H2. Os lançamentos de saques são salvos em tabela, nome tabela: lancamento.
 
-# Inicio
+# Serviços
+
+### POST/Saques/{conta}
+Realiza um lançamento de saque e retorna o valor em cédulas.
+
+### GET/Saques/{conta}
+Busca lançamentos realizados de uma determinada conta.
 
 ### Documentação adicional
 Para consultar mais projetos do autor, consulte o seu repositório no github.
