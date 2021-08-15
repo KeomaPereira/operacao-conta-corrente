@@ -7,7 +7,7 @@ O seguinte projeto foi desenvolvido por Keoma Pereira para prática da programa�
 Realiza um lançamento de saque e retorna o valor em cédulas.
 
 ### GET/Saques/{conta}
-Busca lançamentos realizados de uma determinada conta.
+Busca lançamentos de saques realizados de uma determinada conta.
 
 ### Documentação adicional
 Para consultar mais projetos do autor, consulte o seu repositório no github.
