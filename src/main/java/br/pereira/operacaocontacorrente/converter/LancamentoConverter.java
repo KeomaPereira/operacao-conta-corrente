@@ -24,7 +24,7 @@ public class LancamentoConverter {
         return entity;
     }
 
-    public List<CedulaOutputDto> CedulaOutputDTO(HashMap<Integer, Integer> cedulas) {
+    public List<CedulaOutputDto> toCedulaOutputDTO(HashMap<Integer, Integer> cedulas) {
         List<CedulaOutputDto> listaCedulas = new ArrayList<>();
 
         for(Map.Entry<Integer, Integer> cedula : cedulas.entrySet()) {
