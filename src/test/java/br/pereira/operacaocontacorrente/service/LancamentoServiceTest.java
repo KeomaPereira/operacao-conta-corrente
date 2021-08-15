@@ -1,6 +1,6 @@
 package br.pereira.operacaocontacorrente.service;
 
-import br.pereira.operacaocontacorrente.api.dto.LancamentoDTO;
+import br.pereira.operacaocontacorrente.api.dto.LancamentoOutputDTO;
 import br.pereira.operacaocontacorrente.api.exception.SaqueException;
 import br.pereira.operacaocontacorrente.converter.LancamentoConverter;
 import br.pereira.operacaocontacorrente.repository.LancamentoRepository;
@@ -55,9 +55,9 @@ class LancamentoServiceTest {
 
     @Test
     void deveBuscarLancamentosComSucesso() throws SaqueException {
-        List<LancamentoDTO> listaParaComparar = MockUtils.gerarListaLancamentoDTO();
+        List<LancamentoOutputDTO> listaParaComparar = MockUtils.gerarListaLancamentoDTO();
         Mockito.when(converter.toListaLancamentoDTO(Mockito.anyList())).thenReturn(listaParaComparar);
-        List<LancamentoDTO> listaBuscada = service.buscar(MockUtils.CONTA);
+        List<LancamentoOutputDTO> listaBuscada = service.buscar(MockUtils.CONTA);
         Assert.assertEquals(listaParaComparar, listaBuscada);
     }
 

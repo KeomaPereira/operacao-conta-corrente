@@ -1,7 +1,7 @@
 package br.pereira.operacaocontacorrente.api;
 
 import br.pereira.operacaocontacorrente.api.dto.CedulaOutputDto;
-import br.pereira.operacaocontacorrente.api.dto.LancamentoDTO;
+import br.pereira.operacaocontacorrente.api.dto.LancamentoOutputDTO;
 import br.pereira.operacaocontacorrente.api.dto.LancamentoInputDto;
 import br.pereira.operacaocontacorrente.api.exception.SaqueException;
 import br.pereira.operacaocontacorrente.service.LancamentoService;
@@ -28,9 +28,9 @@ class LancamentoRest {
     }
 
     @GetMapping("saques/{conta}")
-    public ResponseEntity<List<LancamentoDTO>> buscar(@PathVariable("conta") Integer conta) throws SaqueException {
+    public ResponseEntity<List<LancamentoOutputDTO>> buscar(@PathVariable("conta") Integer conta) throws SaqueException {
 
-        List<LancamentoDTO> lista =  lancamentoService.buscar(conta);
+        List<LancamentoOutputDTO> lista =  lancamentoService.buscar(conta);
         return (lista.isEmpty()) ? ResponseEntity.notFound().build() : ResponseEntity.ok(lista);
     }
 

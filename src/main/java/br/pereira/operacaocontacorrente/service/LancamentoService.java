@@ -1,7 +1,7 @@
 package br.pereira.operacaocontacorrente.service;
 
 import br.pereira.operacaocontacorrente.api.dto.CedulaOutputDto;
-import br.pereira.operacaocontacorrente.api.dto.LancamentoDTO;
+import br.pereira.operacaocontacorrente.api.dto.LancamentoOutputDTO;
 import br.pereira.operacaocontacorrente.api.dto.LancamentoInputDto;
 import br.pereira.operacaocontacorrente.api.exception.SaqueException;
 import br.pereira.operacaocontacorrente.converter.LancamentoConverter;
@@ -80,8 +80,8 @@ public class LancamentoService {
         }
     }
 
-    public List<LancamentoDTO> buscar(Integer conta) throws SaqueException {
-        List<LancamentoDTO> lancamentos;
+    public List<LancamentoOutputDTO> buscar(Integer conta) throws SaqueException {
+        List<LancamentoOutputDTO> lancamentos;
         try {
             lancamentos =  converter.toListaLancamentoDTO(repository.findByConta(conta));
         } catch (Exception e) {

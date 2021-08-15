@@ -1,7 +1,7 @@
 package br.pereira.operacaocontacorrente.converter;
 
 import br.pereira.operacaocontacorrente.api.dto.CedulaOutputDto;
-import br.pereira.operacaocontacorrente.api.dto.LancamentoDTO;
+import br.pereira.operacaocontacorrente.api.dto.LancamentoOutputDTO;
 import br.pereira.operacaocontacorrente.entity.Lancamento;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -33,13 +33,13 @@ class LancamentoConverterTest {
 
     @Test
     void deveConverterParaLancamentoDTOComSucesso() {
-        LancamentoDTO dtoConvertido = converter.toLancamentoDTO(MockUtils.gerarLancamento());
+        LancamentoOutputDTO dtoConvertido = converter.toLancamentoDTO(MockUtils.gerarLancamento());
         Assert.assertEquals(MockUtils.CONTA, dtoConvertido.getConta());
     }
 
     @Test
     void toListaLancamentoDTO() {
-        List<LancamentoDTO> listaLancamentosDtosConvertidos = MockUtils.gerarListaLancamentoDTO();
+        List<LancamentoOutputDTO> listaLancamentosDtosConvertidos = MockUtils.gerarListaLancamentoDTO();
         Assert.assertEquals(MockUtils.CONTA, listaLancamentosDtosConvertidos.get(0).getConta());
     }
 }

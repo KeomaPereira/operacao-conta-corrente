@@ -1,7 +1,7 @@
 package br.pereira.operacaocontacorrente.converter;
 
 import br.pereira.operacaocontacorrente.api.dto.CedulaOutputDto;
-import br.pereira.operacaocontacorrente.api.dto.LancamentoDTO;
+import br.pereira.operacaocontacorrente.api.dto.LancamentoOutputDTO;
 import br.pereira.operacaocontacorrente.api.dto.LancamentoInputDto;
 import br.pereira.operacaocontacorrente.entity.Lancamento;
 import org.modelmapper.ModelMapper;
@@ -37,13 +37,13 @@ public class LancamentoConverter {
         return listaCedulas;
     }
 
-    public LancamentoDTO toLancamentoDTO (Lancamento entity) {
+    public LancamentoOutputDTO toLancamentoDTO (Lancamento entity) {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(entity, LancamentoDTO.class);
+        return modelMapper.map(entity, LancamentoOutputDTO.class);
     }
 
-    public List<LancamentoDTO> toListaLancamentoDTO (List<Lancamento> entities) {
-        List<LancamentoDTO> listaLancamentosDTO = new ArrayList<>();
+    public List<LancamentoOutputDTO> toListaLancamentoDTO (List<Lancamento> entities) {
+        List<LancamentoOutputDTO> listaLancamentosDTO = new ArrayList<>();
         entities.stream().forEach(ent -> {
             listaLancamentosDTO.add(toLancamentoDTO(ent));
         });

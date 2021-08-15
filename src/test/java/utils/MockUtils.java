@@ -1,6 +1,6 @@
 package utils;
 
-import br.pereira.operacaocontacorrente.api.dto.LancamentoDTO;
+import br.pereira.operacaocontacorrente.api.dto.LancamentoOutputDTO;
 import br.pereira.operacaocontacorrente.api.dto.LancamentoInputDto;
 import br.pereira.operacaocontacorrente.entity.Lancamento;
 
@@ -29,9 +29,9 @@ public class MockUtils {
         return dto;
     }
 
-    public static List<LancamentoDTO> gerarListaLancamentoDTO() {
-        LancamentoDTO dto = new LancamentoDTO();
-        List<LancamentoDTO> lista = new ArrayList<>();
+    public static List<LancamentoOutputDTO> gerarListaLancamentoDTO() {
+        LancamentoOutputDTO dto = new LancamentoOutputDTO();
+        List<LancamentoOutputDTO> lista = new ArrayList<>();
         dto.setValor(VALOR);
         dto.setConta(CONTA);
         lista.add(dto);

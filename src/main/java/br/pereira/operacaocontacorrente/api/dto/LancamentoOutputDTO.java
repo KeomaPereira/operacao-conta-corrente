@@ -2,7 +2,7 @@ package br.pereira.operacaocontacorrente.api.dto;
 
 import java.time.LocalDateTime;
 
-public class LancamentoDTO {
+public class LancamentoOutputDTO {
 
     private Long id;
 
