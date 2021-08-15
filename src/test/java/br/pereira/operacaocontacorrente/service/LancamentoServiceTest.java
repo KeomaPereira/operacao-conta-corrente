@@ -1,9 +1,9 @@
 package br.pereira.operacaocontacorrente.service;
 
+import br.pereira.operacaocontacorrente.api.dto.LancamentoDTO;
 import br.pereira.operacaocontacorrente.api.exception.SaqueException;
 import br.pereira.operacaocontacorrente.converter.LancamentoConverter;
 import br.pereira.operacaocontacorrente.repository.LancamentoRepository;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,6 +16,7 @@ import org.springframework.dao.DataAccessException;
 import utils.MockUtils;
 
 import java.util.HashMap;
+import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 class LancamentoServiceTest {
@@ -29,16 +30,10 @@ class LancamentoServiceTest {
     @Mock
     private LancamentoConverter converter;
 
-    @After
-    public void reset_mocks() {
-        Mockito.reset(service);
-    }
-
     @Test
     void deveBuscarValorEmCedulasComSucesso() throws SaqueException {
         HashMap<Integer, Integer> valorEmCedulasBuscado = service.buscarValorEmCedulas(MockUtils.VALOR_SAQUE_PERMITIDO);
         HashMap<Integer, Integer> valorEmCedulasParaComparar = MockUtils.gerarCedulas();
-
         Assert.assertEquals(valorEmCedulasParaComparar, valorEmCedulasBuscado);
     }
 
@@ -56,6 +51,14 @@ class LancamentoServiceTest {
         } catch (Exception e) {
             Assert.assertEquals(MockUtils.MSG_ERRO_EFETUAR_LANCAMENTO, e.getMessage());
         }
+    }
+
+    @Test
+    void deveBuscarLancamentosComSucesso() throws SaqueException {
+        List<LancamentoDTO> listaParaComparar = MockUtils.gerarListaLancamentoDTO();
+        Mockito.when(converter.toListaLancamentoDTO(Mockito.anyList())).thenReturn(listaParaComparar);
+        List<LancamentoDTO> listaBuscada = service.buscar(MockUtils.CONTA);
+        Assert.assertEquals(listaParaComparar, listaBuscada);
     }
 
 }

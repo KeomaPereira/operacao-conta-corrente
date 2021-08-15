@@ -1,6 +1,7 @@
 package br.pereira.operacaocontacorrente.service;
 
-import br.pereira.operacaocontacorrente.api.dto.CedulaOutDto;
+import br.pereira.operacaocontacorrente.api.dto.CedulaOutputDto;
+import br.pereira.operacaocontacorrente.api.dto.LancamentoDTO;
 import br.pereira.operacaocontacorrente.api.dto.LancamentoInputDto;
 import br.pereira.operacaocontacorrente.api.exception.SaqueException;
 import br.pereira.operacaocontacorrente.converter.LancamentoConverter;
@@ -24,11 +25,12 @@ public class LancamentoService {
     private static final int[] CEDULAS = {100, 50, 20, 10};
     private static final String MSG_VALOR_NAO_PERMITE_SAQUE = "Valor não permite saque.";
     private static final String MSG_ERRO_EFETUAR_LANCAMENTO = "Erro ao efetivar lançamento.";
+    private static final String MSG_ERRO_BUSCAR_LANCAMENTO = "Erro ao buscar lançamentos.";
 
-    public List<CedulaOutDto> sacar(LancamentoInputDto dto, Integer conta ) throws SaqueException {
+    public List<CedulaOutputDto> sacar(LancamentoInputDto dto, Integer conta ) throws SaqueException {
         try {
             HashMap<Integer, Integer> totalCedulas = buscarValorEmCedulas(dto.getValor());
-            List<CedulaOutDto> cedulasParaSacar = converter.toDTO(totalCedulas);
+            List<CedulaOutputDto> cedulasParaSacar = converter.CedulaOutputDTO(totalCedulas);
             efetivar(converter.toEntity(dto, conta));
             return cedulasParaSacar;
         } catch (Exception e) {
@@ -76,6 +78,16 @@ public class LancamentoService {
         } catch (Exception e) {
             throw new SaqueException(MSG_ERRO_EFETUAR_LANCAMENTO);
         }
+    }
+
+    public List<LancamentoDTO> buscar(Integer conta) throws SaqueException {
+        List<LancamentoDTO> lancamentos;
+        try {
+            lancamentos =  converter.toListaLancamentoDTO(repository.findByConta(conta));
+        } catch (Exception e) {
+            throw new SaqueException(MSG_ERRO_BUSCAR_LANCAMENTO);
+        }
+        return lancamentos;
     }
 
 }

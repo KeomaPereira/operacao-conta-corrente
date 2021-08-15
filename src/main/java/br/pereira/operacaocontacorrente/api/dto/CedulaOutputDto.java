@@ -1,6 +1,6 @@
 package br.pereira.operacaocontacorrente.api.dto;
 
-public class CedulaOutDto {
+public class CedulaOutputDto {
 
     private Integer cedula;
 

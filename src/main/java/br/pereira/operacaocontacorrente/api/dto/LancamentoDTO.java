@@ -1,32 +1,17 @@
-package br.pereira.operacaocontacorrente.entity;
+package br.pereira.operacaocontacorrente.api.dto;
 
-import com.sun.istack.NotNull;
-
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "lancamento")
-public class Lancamento {
+public class LancamentoDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "conta")
-    @NotNull
     private Integer conta;
 
-    @Column(name = "valor")
-    @NotNull
     private Integer valor;
 
-    @Column(name = "tipo")
-    @NotNull
     private String tipo;
 
-    @Column(name = "data")
     private LocalDateTime data;
 
     public Integer getConta() {
