@@ -27,7 +27,7 @@ class LancamentoConverterTest {
 
     @Test
     void deveConverterParaCedulaOutputDTOComSucesso() {
-        List<CedulaOutputDto> cedulasConvertidas = converter.toCedulaOutputDTO(MockUtils.gerarCedulas());
+        List<CedulaOutputDto> cedulasConvertidas = converter.toListaCedulaOutputDTO(MockUtils.gerarCedulas());
         Assert.assertEquals(MockUtils.CEDULA_DEZ, cedulasConvertidas.get(0).getCedula());
     }
 

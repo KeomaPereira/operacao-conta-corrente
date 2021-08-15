@@ -30,7 +30,7 @@ public class LancamentoService {
     public List<CedulaOutputDto> sacar(LancamentoInputDto dto, Integer conta ) throws SaqueException {
         try {
             HashMap<Integer, Integer> totalCedulas = buscarValorEmCedulas(dto.getValor());
-            List<CedulaOutputDto> cedulasParaSacar = converter.toCedulaOutputDTO(totalCedulas);
+            List<CedulaOutputDto> cedulasParaSacar = converter.toListaCedulaOutputDTO(totalCedulas);
             efetivar(converter.toEntity(dto, conta));
             return cedulasParaSacar;
         } catch (Exception e) {
