@@ -9,6 +9,9 @@ Realiza um lançamento de saque e retorna o valor em cédulas.
 ### GET/Saques/{conta}
 Busca lançamentos de saques realizados de uma determinada conta.
 
+### Testes automatizados
+ [Projeto de automação](https://github.com/KeomaPereira/operacao-conta-corrente-automacao)
+
 ### Documentação adicional
 Para consultar mais projetos do autor, consulte o seu repositório no github.
 
