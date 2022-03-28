@@ -29,7 +29,7 @@ class LancamentoRestTest {
     private LancamentoService service;
 
     @Test
-    void deveConverterParaLancamentoComSucesso2() throws Exception {
+    void deveBuscarSaquesDaContaComSucesso() throws Exception {
         LancamentoOutputDTO dto = getLancamentoOutputDTO();
         mockMvc = MockMvcBuilders.standaloneSetup(lancamentoRest).build();
         Mockito.when(service.buscar(Mockito.any())).thenReturn(List.of(dto));
