@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/conta-corrente/lancamentos")
 
-class LancamentoRest {
+public class LancamentoRest {
 
     @Autowired
     private LancamentoService lancamentoService;
