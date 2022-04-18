@@ -6,6 +6,7 @@ import br.pereira.operacaocontacorrente.api.dto.LancamentoInputDto;
 import br.pereira.operacaocontacorrente.api.exception.SaqueException;
 import br.pereira.operacaocontacorrente.service.LancamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,10 +22,10 @@ public class LancamentoRest {
     private LancamentoService lancamentoService;
 
     @PostMapping("saques/{conta}")
-    public List<CedulaOutputDto> sacar(@PathVariable("conta") Integer conta,
+    public ResponseEntity<List<CedulaOutputDto>> sacar(@PathVariable("conta") Integer conta,
                                        @Valid @RequestBody LancamentoInputDto dto) throws SaqueException {
 
-        return lancamentoService.sacar(dto, conta);
+        return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoService.sacar(dto, conta));
     }
 
     @GetMapping("saques/{conta}")
